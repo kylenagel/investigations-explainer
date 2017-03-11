@@ -1,0 +1,51 @@
+{{#content}}
+
+<div id="kn_story_details">
+
+	<div class="kn_close_mask">
+		<span class="fa fa-close"></span>
+	</div>
+
+	<div class="kn_story_details_body">
+		
+		{{#each page_data.channel.item}}
+		
+		<div class="content_container">
+			
+			<div class="photo_container">
+				{{#if images}}
+				<div class="photo" style="background-image:url('{{images.0.url}}')"></div>
+				{{else}}
+				<div class="photo" style="background-image:url('{{videos.0.image.url}}')"></div>
+				{{/if}}
+			</div>
+
+			<div class="meta_container">
+				<h2>
+					<a href="{{canonical_url}}" target="_blank">{{title}}</a>
+				</h2>
+				<p class="byline"><strong>{{author}} | {{parse_date pub_date}}</strong></p>
+			</div>
+
+			<div class="explanation_container">
+				<p><strong>BACKGROUND</strong></p>
+				{{parse_gs_paragraphs ../description}}
+			</div>
+
+			<div class="excerpt_container">
+				<p><strong>EXCERPT</strong></p>
+				{{get_story_excerpt full_text}}
+			</div>
+
+			<div class="read_investigation">
+				<a href="{{canonical_url}}" target="_blank">READ THE INVESTIGATION <span class="fa fa-external-link"></span></a>
+			</div>
+
+		{{/each}}
+
+	</div>
+
+</div>
+
+{{/content}}
+

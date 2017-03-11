@@ -1,0 +1,163 @@
+#kn_container h1 {
+	font: bold 49px 'Oswald', sans-serif;
+	line-height: 1.2em;
+	color: #4C4E4F;
+}
+#kn_container h2,
+#kn_container h3,
+#kn_container h4,
+#kn_container h5,
+#kn_container h6 {
+	font-family: 'Slabo 27px', serif;
+	font-weight: bold;
+	line-height: 1.2em;
+	color: #4C4E4F;
+}
+#kn_container p {
+	font: 14px 'Open Sans', sans-serif;
+	line-height: 1.5em;
+}
+#kn_stories_list {
+	margin: 50px 0px;
+}
+#kn_mask {
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+	height: 0%;
+	background: rgba(0,0,0,0.8);
+	transition: 1200ms;
+	-moz-transition: 1200ms;
+	-ms-transition: 1200ms;
+	-webkit-transition: 1200ms;
+	z-index: 2000000;
+}
+#kn_mask.visible {
+	height: 100%;
+}
+#kn_stories_list .investigative_story {
+	display: inline-block;
+	width: 31%;
+	margin: 0px 14px 14px 0px;
+	vertical-align: top;
+	border-radius: 6px;
+	-ms-border-radius: 6px;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	box-shadow: 0px 0px 2px rgba(0,0,0,0.3);
+	overflow: hidden;
+}
+#kn_stories_list .investigative_story .content_container {
+	box-sizing: border-box;
+	padding: 14px;
+}
+#kn_stories_list .investigative_story .content_container .photo_container {
+	height: 200px;
+	width: 100%;
+	margin-bottom: 14px;
+}
+#kn_stories_list .investigative_story .content_container .photo_container .photo {
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+	box-shadow: 0px 0px 2px rgba(0,0,0,0.3);
+}
+#kn_stories_list .investigative_story .content_container .text_container {
+	margin-bottom: 14px;
+}
+#kn_stories_list .investigative_story .content_container .text_container h3 {}
+#kn_stories_list .investigative_story .content_container .text_container h3 a {
+	font: bold 18px 'Georgia', sans-serif;
+	line-height: 1.4em;
+}
+#kn_stories_list .investigative_story .read_more_container {
+	padding: 14px 0px;
+	text-align: center;
+	background: #0077AE;
+	transition: 500ms;
+	-ms-transition: 500ms;
+	-webkit-transition: 500ms;
+	-moz-transition: 500ms;
+	cursor: pointer;
+}
+#kn_stories_list .investigative_story .read_more_container:hover {
+	background: #085173;
+}
+#kn_stories_list .investigative_story .read_more_container .read_more {
+	color: white;
+	font: bold 14px 'Open Sans', sans-serif;
+	line-height: 1.2em;
+}
+#kn_stories_list .investigative_story .read_more_container .read_more span {
+	font-size: 1.3em;
+	margin-left: 5px;
+}
+#kn_story_details {
+	position: absolute;
+	top: 5%;
+	left: 20%;
+	width: 60%;
+	background: white;
+}
+#kn_story_details .kn_close_mask {
+	background: #0077AE;
+	box-sizing: border-box;
+	padding: 14px 28px;
+	text-align: right;
+}
+#kn_story_details .kn_close_mask span {
+	font-size: 2.2em;
+	color: white;
+	cursor: pointer;
+}
+#kn_story_details .kn_story_details_body {
+	box-sizing: border-box;
+	padding: 21px;
+	overflow: scroll;
+	overflow-x:hidden;
+}
+#kn_story_details .kn_story_details_body .content_container {}
+#kn_story_details .kn_story_details_body .content_container p {
+	font: 14px 'Open Sans', sans-serif;
+	line-height: 1.5em;
+}
+#kn_story_details .kn_story_details_body .content_container .photo_container {
+	width: 100%;
+	height: 250px;
+}
+#kn_story_details .kn_story_details_body .content_container .photo_container .photo {
+	width: 100%;
+	height: 100%;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: top center;
+}
+#kn_story_details .kn_story_details_body .content_container .read_investigation {
+	margin: 14px 0px;
+}
+#kn_story_details .kn_story_details_body .content_container .read_investigation a {
+	display: inline-block;
+	background: #B31C27;
+	color: white;
+	text-align: center;
+	padding: 10px 21px;
+	border-radius: 7px;
+	-ms-border-radius: 7px;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	font: bold 16px 'Open Sans', sans-serif;
+	transition: 400ms;
+	-ms-transition: 400ms;
+	-moz-transition: 400ms;
+	-webkit-transition: 400ms;
+}
+#kn_story_details .kn_story_details_body .content_container .read_investigation a:hover {
+	text-decoration: none;
+	background: #7A1B22;
+}
+#kn_story_details .kn_story_details_body .content_container .read_investigation a span {
+	margin-left: 4px;
+}

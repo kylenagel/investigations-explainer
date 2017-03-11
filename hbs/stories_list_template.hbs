@@ -1,0 +1,33 @@
+<div id="kn_stories_list">
+	
+	{{#each content}}
+	<div class="investigative_story">
+		{{#each page_data.channel.item}}
+		
+		<div class="content_container">
+			
+			<div class="photo_container">
+				{{#if images}}
+				<div class="photo" style="background-image:url('{{images.0.url}}')"></div>
+				{{else}}
+				<div class="photo" style="background-image:url('{{videos.0.image.url}}')"></div>
+				{{/if}}
+			</div>
+
+			<div class="text_container">
+				<h3>
+					<a href="{{canonical_url}}" target="_blank">{{title}}</a>
+				</h3>
+			</div>
+
+		</div>
+
+		<div class="read_more_container" data-id="{{../id}}">
+			<div class="read_more">HOW WE GOT IT <span class="fa fa-info-circle"></span></div>
+		</div>
+
+		{{/each}}
+	</div>
+	{{/each}}
+
+</div>
