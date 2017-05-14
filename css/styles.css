@@ -129,7 +129,7 @@
 	height: 250px;
 }
 #kn_story_details .kn_story_details_body .content_container .photo_container .photo {
-	width: 100%;
+	width: 50%;
 	height: 100%;
 	background-repeat: no-repeat;
 	background-size: cover;

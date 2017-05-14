@@ -6,6 +6,7 @@ var kn_data = {
 	],
 	gs_data: {},
 	gs_url: 'https://docs.google.com/spreadsheets/d/1sd4iRz_xkzZEYno9UyqfZCqS_bEUEkS_xutMBZh5-TI/edit#gid=0',
+	no_page_data: [],
 	stylesheets: [
 		'css/styles.css?version=2',
 		'https://fonts.googleapis.com/css?family=Oswald',
@@ -69,6 +70,18 @@ function outputStoriesListTemplate() {
 
 	// IF ALL STORIES HAVE PAGE DATA FROM METHODE API CALLS
 	if (all_stories_have_data) {
+
+		// REMOVE INDECES THAT HAVE NO PAGE DATA
+		for (i in kn_data.gs_data.stories_list) {
+			if (kn_data.gs_data.stories_list[i].page_data == 'none') {
+				kn_data.no_page_data.push(kn_data.gs_data.stories_list[i]);
+				kn_data.gs_data.stories_list.splice(i,1);
+			}
+		}
+
+		console.log('NO PAGE DATA FOR THESE STORIES:');
+		console.log(kn_data.no_page_data);
+
 		// SORT THE DATA BY DATE, DESCENDING
 		kn_data.gs_data.stories_list.sort(function(a,b) {
 			a = moment(new Date(a.page_data.channel.item[0].pub_date));
@@ -81,9 +94,25 @@ function outputStoriesListTemplate() {
 				return 0;
 			}
 		});
+
 		// OUTPUT THE TEMPLATE
 		var data = {}
 		data.content = kn_data.gs_data.stories_list;
+		// SAVE CORRECT IMAGE TO USE FOR THIS ITEM
+		for (i in data.content) {
+			var q = data.content[i].page_data.channel.item[0];
+			if (q.images) {
+				q.show_image = q.images[0].url;
+			} else if (q.videos) {
+				q.show_image = q.videos[0].image.url;
+			} else if (q.related_content) {
+				for (r in q.related_content) {
+					if (q.related_content[r].item_class == 'image') {
+						q.show_image = q.related_content[r].images[0].url;
+					}
+				}
+			}
+		}
 		console.log(data);
 		outputHandlebarsTemplate(data,kn_data.templates.stories_list,"#kn_view");
 	// IF NOT ALL STORIES HAVE PAGE DATA, RUN FUNCTION AGAIN
@@ -152,7 +181,6 @@ function outputHandlebarsTemplate(data,template,destination) {
 
 			Handlebars.registerHelper('get_story_excerpt', function(summary) {
 				var html = $.parseHTML(summary);
-				console.log(html);
 				var return_paragraphs = [];
 				for (i in html) {
 					if (return_paragraphs.length < 4) {
@@ -208,6 +236,8 @@ function getStoryData(uuid, index) {
 			if (page_data.channel.item.length>0) {
 				// ADD PAGE DATA TO THE STORIES LIST
 				kn_data.gs_data.stories_list[index].page_data = page_data;
+			} else {
+				kn_data.gs_data.stories_list[index].page_data = 'none';
 			}
 		},
 		error: function(a,b,c) {
@@ -223,8 +253,6 @@ function showDetails(id) {
 	showMask();
 	var data = {}
 	for (i in kn_data.gs_data.stories_list) {
-		console.log(kn_data.gs_data.stories_list[i].id);
-		console.log(id);
 		if (kn_data.gs_data.stories_list[i].id == id) {
 			data.content = kn_data.gs_data.stories_list[i];
 		}

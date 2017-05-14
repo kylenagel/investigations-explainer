@@ -13,18 +13,21 @@
 		<div class="content_container">
 			
 			<div class="photo_container">
+				<div class="photo" style="background-image:url('{{show_image}}')"></div>
+				<!--
 				{{#if images}}
 				<div class="photo" style="background-image:url('{{images.0.url}}')"></div>
 				{{else}}
 				<div class="photo" style="background-image:url('{{videos.0.image.url}}')"></div>
 				{{/if}}
+				-->
 			</div>
 
 			<div class="meta_container">
 				<h2>
 					<a href="{{canonical_url}}" target="_blank">{{title}}</a>
 				</h2>
-				<p class="byline"><strong>{{author}} | {{parse_date pub_date}}</strong></p>
+				<p class="byline"><strong>{{#if author}}{{author}} | {{/if}}{{parse_date pub_date}}</strong></p>
 			</div>
 
 			<div class="explanation_container">
@@ -32,10 +35,12 @@
 				{{parse_gs_paragraphs ../description}}
 			</div>
 
+			{{#if full_text}}
 			<div class="excerpt_container">
 				<p><strong>EXCERPT</strong></p>
 				{{get_story_excerpt full_text}}
 			</div>
+			{{/if}}
 
 			<div class="read_investigation">
 				<a href="{{canonical_url}}" target="_blank">READ THE INVESTIGATION <span class="fa fa-external-link"></span></a>
